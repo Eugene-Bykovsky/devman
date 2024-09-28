@@ -1,5 +1,5 @@
-print("\u001b[34m")
-print("""
+print("\u001b[34m", end="")
+print("""\
                 _-o#&&*''''?d:>b\\_
               _o/'`''  '',, dMF9MMMMMHo_
            .o&#'        `'MbHMMMMMMMMMMMHo.
@@ -24,4 +24,31 @@ print("""
                 . _                  .-PP
                   '`--._,dd###pp='''
 """)
-print("\u001b[0m")
+print("\u001b[0m", end="")
+print("\u001b[34m", end="")
+print("""\
+                 .ovr:HMM#?:`' >b\\_
+              .,:&Hi' `'   '' \\\\|&bSMHo_
+            oHMMM#*}          `?&dMMMMMMHo.
+         .dMMMH'''''           ,oHH*&&9MMMM?.
+        ,MMM*'                 `*M\\bd<|'*&#MH\\
+       dHH?'                   :MMMMMM#bd#odMML
+      H' |\\                  `dMMMMMMMMMMMMMM9Mk
+     JL/'7+,.                `MMMMMMMMMMMMMMMH9ML
+    -`Hp     '               |MMMMMMMMMMMMMMMMHH|:
+    :  \\\\#M#d?                `HMMMMMMMMMMMMMMMMH.
+    .   JMMMMM##,              ``*''''*#MMMMMMMMH
+    -. ,MMMMMMMM6o_                    |MMMMMMMM':
+    :  |MMMMMMMMMMMMMb\\                 TMMMMMMT :
+    .   ?MMMMMMMMMMMMM'                 :MMMMMM|.`
+    -    ?HMMMMMMMMMM:                  HMMMMMM\\|:
+     :     9MMMMMMMMH'                 `MMMMMP.P.
+      .    `MMMMMMT''                   HMMM*''-
+       -    TMMMMM'                     MM*'  -
+        '.   HMM#                            -
+          -. `9M:                          .'
+            -. `b,,    .                . '
+              '-\\   .,               .-`
+                  '-:b~\\\\_,oddq==--'
+""")
+print("\u001b[0m", end="")
