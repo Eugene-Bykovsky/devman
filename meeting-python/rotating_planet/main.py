@@ -9,10 +9,12 @@ from functions import (
     set_white_color_black_back,
 )
 
+set_green_color_black_back()
+clear_screen_and_move_cursor()
+
 for planet in PLANETS:
-    set_green_color_black_back()
     render_planet(planet)
-    time.sleep(1)
+    time.sleep(0.7)
     clear_screen_and_move_cursor()
 
 set_white_color_black_back()

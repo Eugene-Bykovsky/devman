@@ -9,7 +9,7 @@ def set_white_color_black_back() -> None:
 
 
 def clear_screen_and_move_cursor() -> None:
-    """Очищает экран и двигает курсор вверх"""
+    """Очищает экран и двигает курсор в начало"""
     print("\033[2J\033[1;1H", end="")
 
 
