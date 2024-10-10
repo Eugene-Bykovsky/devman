@@ -24,7 +24,7 @@
 Функция print_game отвечает за вывод текущего состояния игры.  
 Она отображает информацию о неправильных попытках игрока, текущее состояние и формат угадываемого слова.
 
-![Пример работы](./images/print_game.png)
+![Пример работы](https://raw.githubusercontent.com/Eugene-Bykovsky/devman/refs/heads/main/code-reading/images/print_game.png)
 
 ## Описание функции `get_letter`
 
