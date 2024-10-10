@@ -23,5 +23,6 @@
 ``` python main.py```  
 
 ## Ожидаемый формат вывода 
+``` python main.py```  
 
 ![Пример погоды](./images/weather_example.png)

@@ -19,7 +19,7 @@ def fetch_weather_data(url: str, payload: dict, place: str) -> str:
         payload: Parameters for the API request.
         place: The location for which to fetch weather data.
 
-    Returns: Wheather data(str) for a given place
+    Returns: Weather data(str) for a given place
     """
     response = requests.get(f"{url}{place}", params=payload)
     response.raise_for_status()
