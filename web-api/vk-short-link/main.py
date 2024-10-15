@@ -3,7 +3,6 @@ import requests
 
 from dotenv import load_dotenv
 from urllib.parse import urlparse
-from urllib.parse import urldefrag
 
 load_dotenv()
 
@@ -15,29 +14,35 @@ VK_API_METHODS = {
 TOKEN = os.getenv('SERVICE_TOKEN')
 
 
-def shorten_link(token, link):
-    response = requests.get(
-        f'{VK_API_URL+VK_API_METHODS["getShortLink"]}?access_token={token}&v=5'
-        f'.199&url={link}')
+def vk_api_request(method, params):
+    response = requests.get(f'{VK_API_URL + VK_API_METHODS[method]}',
+                            params=params)
     response.raise_for_status()
     if 'error' in response.json():
         err_code = response.json()['error']['error_code']
         err_msg = response.json()['error']['error_msg']
         raise ValueError(f'code {err_code} - {err_msg}')
-    return response.json()['response']['short_url']
+    return response.json()['response']
+
+
+def shorten_link(token, link):
+    params = {
+        'access_token': token,
+        'v': '5.199',
+        'url': link
+    }
+    return vk_api_request('getShortLink', params)['short_url']
 
 
 def count_clicks(token, link):
     link = urlparse(link).path.replace('/', '')
-    response = requests.get(
-        f'{VK_API_URL+VK_API_METHODS["getLinkStats"]}?access_token={token}&v=5'
-        f'.199&key={link}&interval=forever')
-    response.raise_for_status()
-    if 'error' in response.json():
-        err_code = response.json()['error']['error_code']
-        err_msg = response.json()['error']['error_msg']
-        raise ValueError(f'code {err_code} - {err_msg}')
-    return response.json()['response']['stats'][0]['views']
+    params = {
+        'access_token': token,
+        'v': '5.199',
+        'key': link,
+        'interval': 'forever'
+    }
+    return vk_api_request('getLinkStats', params)['stats'][0]['views']
 
 
 if __name__ == '__main__':
@@ -53,7 +58,6 @@ if __name__ == '__main__':
         print(f"Can't get data from server. Request error:\n {req_err}")
     except ValueError as api_err:
         print(f'VK API error: {api_err}')
-
 
 # https://dvmn.org/modules
 # https://vk.cc/cvPDMl
