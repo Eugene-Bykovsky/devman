@@ -4,14 +4,11 @@ import requests
 from dotenv import load_dotenv
 from urllib.parse import urlparse
 
-load_dotenv()
-
 VK_API_URL = 'https://api.vk.ru/method/'
 VK_API_METHODS = {
     'getShortLink': 'utils.getShortLink',
     'getLinkStats': 'utils.getLinkStats',
 }
-TOKEN = os.getenv('SERVICE_TOKEN')
 
 
 def get_link_key(url: str) -> str:
@@ -21,7 +18,7 @@ def get_link_key(url: str) -> str:
 
 def vk_api_request(method: str, params: dict) -> dict:
     """Делает запрос в API VK"""
-    response = requests.get(f'{VK_API_URL + VK_API_METHODS[method]}',
+    response = requests.get(f'{VK_API_URL}{VK_API_METHODS[method]}',
                             params=params)
     response.raise_for_status()
     if 'error' in response.json():
@@ -71,14 +68,21 @@ def count_clicks(token: str, url: str) -> int:
         'views']
 
 
-if __name__ == '__main__':
+def main():
+    load_dotenv()
+    try:
+        token = os.environ['VK_API_SERVICE_TOKEN']
+    except KeyError as key_err:
+        print(f'KeyError: {key_err}')
+        raise SystemExit
+
     link = input('Введите ссылку: ')
     try:
-        if is_shorten_link(TOKEN, link):
-            count_clicks = count_clicks(TOKEN, link)
-            print('Количество кликов по ссылке: ', count_clicks)
+        if is_shorten_link(token, link):
+            clicks_count = count_clicks(token, link)
+            print('Количество кликов по ссылке: ', clicks_count)
         else:
-            short_link = shorten_link(TOKEN, link)
+            short_link = shorten_link(token, link)
             print('Сокращенная ссылка: ', short_link)
     except requests.exceptions.HTTPError as http_err:
         print(f"Can't get data from server.HTTP error:\n{http_err}")
@@ -86,3 +90,7 @@ if __name__ == '__main__':
         print(f"Can't get data from server. Request error:\n {req_err}")
     except ValueError as api_err:
         print(f'VK API error: {api_err}')
+
+
+if __name__ == '__main__':
+    main()
