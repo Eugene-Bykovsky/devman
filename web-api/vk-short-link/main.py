@@ -89,7 +89,7 @@ def main():
     try:
         link = namespace.link
     except AttributeError as atr_err:
-        print(f'Ошибка при получении обязательного аргумента: {atr_err}')
+        print(f'Ошибка при получении аргумента: {atr_err}')
         raise SystemExit
 
     try:
