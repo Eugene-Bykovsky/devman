@@ -1,3 +1,4 @@
+import argparse
 import os
 import requests
 
@@ -68,15 +69,35 @@ def count_clicks(token: str, url: str) -> int:
         'views']
 
 
+def create_parser():
+    parser = argparse.ArgumentParser(
+        description='Программа получает в качестве аргумента ссылку. В том '
+                    'случаее если эта ссылка длинная, то с помощью VK API '
+                    'сокращает её. Если это сокращенная ссылка, то дает '
+                    'информацию по количеству кликов по ссылке.'
+    )
+    parser.add_argument('link', nargs='?')
+    return parser
+
+
 def main():
     load_dotenv()
+
+    parser = create_parser()
+    namespace = parser.parse_args()
+
+    try:
+        link = namespace.link
+    except AttributeError as atr_err:
+        print(f'Ошибка при получении обязательного аргумента: {atr_err}')
+        raise SystemExit
+
     try:
         token = os.environ['VK_API_SERVICE_TOKEN']
     except KeyError as key_err:
         print(f'KeyError: {key_err}')
         raise SystemExit
 
-    link = input('Введите ссылку: ')
     try:
         if is_shorten_link(token, link):
             clicks_count = count_clicks(token, link)
