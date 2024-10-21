@@ -34,10 +34,11 @@
 Создайте файл .env и переменную окружения VK_API_SERVICE_TOKEN и поместите в нее полученный токен доступа API VK.  
 Для получения токена посетите документацию VK API   (https://dev.vk.com/ru/reference)
 
-7. **Запустите скрипт командой:**  
-``` python main.py```
+7. **Запустите скрипт командой и передайте ссылку в терминал в качестве аргумента:**  
+``` python main.py <ссылка>```
 
 ## Ожидаемый формат вывода 
-``` python main.py```  
+``` python main.py https://dvmn.org/modules ```  
+``` python main.py https://vk.cc/cvPDMl ```  
 
 ![Пример](./images/example.png)
