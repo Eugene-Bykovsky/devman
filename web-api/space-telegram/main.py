@@ -1,9 +1,9 @@
-import requests
 import os
-
-from urllib.parse import urlsplit, unquote
 from os.path import splitext
 from pathlib import Path
+from urllib.parse import unquote, urlsplit
+
+import requests
 from dotenv import load_dotenv
 
 load_dotenv()
