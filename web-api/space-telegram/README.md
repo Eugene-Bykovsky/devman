@@ -41,6 +41,10 @@
 Примеры запуска скриптов:
 
 ```
+python fetch_apod_images.py
+
+python fetch_epic_images.py
+
 python fetch_spacex_images.py --launch_id 5eb87d47ffd86e000604b38a 
 
 python publish_photo.py

@@ -12,7 +12,7 @@ def fetch_epic_images():
     response = get_response('https://api.nasa.gov/EPIC/api/natural/images',
                             params)
     images_data = [(item['image'], item['date'].split()[0].replace('-', '/'))
-                  for item in response.json()]
+                   for item in response.json()]
     directory_name = 'epic_images'
     make_directory(directory_name)
     for i, item in enumerate(images_data):
