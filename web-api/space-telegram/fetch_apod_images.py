@@ -4,10 +4,10 @@ from dotenv import load_dotenv
 
 from api_utils import download_image, get_response, make_directory
 
-load_dotenv()
-
 
 def fetch_apod_images():
+    load_dotenv()
+
     params = {'api_key': os.environ['APOD_NASA_API_KEY'], 'count': 30}
     response = get_response('https://api.nasa.gov/planetary/apod', params)
     data = response.json()

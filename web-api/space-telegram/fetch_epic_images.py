@@ -4,10 +4,10 @@ from dotenv import load_dotenv
 
 from api_utils import download_image, get_response, make_directory
 
-load_dotenv()
-
 
 def fetch_epic_images():
+    load_dotenv()
+
     params = {'api_key': os.environ['EPIC_NASA_API_KEY']}
     response = get_response('https://api.nasa.gov/EPIC/api/natural/images',
                             params)

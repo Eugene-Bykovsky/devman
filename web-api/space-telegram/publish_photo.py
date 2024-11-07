@@ -1,8 +1,9 @@
+import argparse
 import os
 import random
-import argparse
-import telegram
 from pathlib import Path
+
+import telegram
 from dotenv import load_dotenv
 
 
