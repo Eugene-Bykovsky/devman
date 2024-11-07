@@ -1,7 +1,8 @@
-import requests
-from pathlib import Path
 from os.path import splitext
+from pathlib import Path
 from urllib.parse import unquote, urlsplit
+
+import requests
 
 
 def get_response(url, params=None):

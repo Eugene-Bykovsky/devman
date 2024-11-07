@@ -1,6 +1,8 @@
 import os
-from api_utils import get_response, download_image, make_directory
+
 from dotenv import load_dotenv
+
+from api_utils import download_image, get_response, make_directory
 
 load_dotenv()
 

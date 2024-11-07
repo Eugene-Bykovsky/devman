@@ -1,9 +1,11 @@
 import argparse
-from api_utils import get_response, download_image, make_directory
+
+from api_utils import download_image, get_response, make_directory
 
 
 def fetch_spacex_images(launch_id):
-    response = get_response(f'https://api.spacexdata.com/v5/launches/{launch_id}')
+    response = get_response(f'https://api.spacexdata.com/v5/launches/'
+                            f'{launch_id}')
     data = response.json()
     directory_name = 'spacex_launch_images'
     make_directory(directory_name)
@@ -13,10 +15,10 @@ def fetch_spacex_images(launch_id):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Download SpaceX launch '
-                                                 'images')
+    parser = argparse.ArgumentParser(description='Скрипт для скачивания фото '
+                                                 'запусков SpaceX')
     parser.add_argument('--launch_id', type=str,
-                        help='ID of the SpaceX launch')
+                        help='ID запуска')
     args = parser.parse_args()
     fetch_spacex_images(args.launch_id if args.launch_id
                         else 'latest')
